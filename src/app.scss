@@ -5,9 +5,12 @@
 	line-height: 1.5;
 	font-weight: 400;
 
+	--app-bg: #242424;
+	--app-text: rgba(255, 255, 255, 0.87);
+
 	color-scheme: light dark;
-	color: rgba(255, 255, 255, 0.87);
-	background-color: #242424;
+	color: var(--app-text);
+	background-color: var(--app-bg);
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -15,8 +18,8 @@
 	-moz-osx-font-smoothing: grayscale;
 
 	@include theme-light {
-		color: #213547;
-		background-color: #ffffff;
+		--app-bg: whitesmoke;
+		--app-text: #213547;
 	}
 }
 
@@ -39,4 +42,18 @@ a {
 			color: #747bff;
 		}
 	}
+}
+
+input, button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	display: block;
+	font-family: inherit;
+	color: inherit;
+	border: none;
+	outline: none;
+	font-size: 1rem;
+	background-color: transparent;
+	background: none;
 }
