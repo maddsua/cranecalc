@@ -3,6 +3,7 @@
 export let options: Record<string, string>;
 export let name: string | undefined = undefined;
 export let id: string | undefined = undefined;
+export let value: string | undefined = undefined;
 
 </script>
 
@@ -14,7 +15,7 @@ export let id: string | undefined = undefined;
 		</slot>
 	</label>
 
-	<select name={name} id={id}>
+	<select name={name} id={id} bind:value={value}>
 
 		{#each Object.entries(options) as [key, title]}
 			<option value={key}>

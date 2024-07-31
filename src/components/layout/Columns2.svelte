@@ -1,4 +1,4 @@
-<div class="layout-split-2">
+<div class="columns-2">
 	<slot>
 		[Content]
 	</slot>
@@ -6,7 +6,7 @@
 
 <style lang="scss">
 
-	.layout-split-2 {
+	.columns-2 {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 2rem;

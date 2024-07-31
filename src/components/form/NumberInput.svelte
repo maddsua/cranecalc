@@ -5,6 +5,15 @@
 	export let value: number | undefined = undefined;
 	export let min: number | undefined = undefined;
 	export let max: number | undefined = undefined;
+	export let step: number = 1;
+
+	let inputRef: HTMLInputElement;
+
+	$: inputValid = (
+		typeof value === 'number' &&
+		!isNaN(value) &&
+		(() => inputRef?.validity?.valid)()
+	);
 
 </script>
 
@@ -16,7 +25,15 @@
 		</slot>
 	</label>
 
-	<input type="number" name={name} id={id} min={min} max={max} bind:value={value} />
+	<input type="number" required
+		name={name}
+		id={id}
+		min={min}
+		max={max}
+		step={step}
+		class:invalid={!inputValid}
+		bind:value={value}
+		bind:this={inputRef} />
 
 </div>
 
@@ -42,6 +59,10 @@
 		background-color: #2b2a33;
 		border: 1px solid #8f8f9d;
 		border-radius: 0.25rem;
+
+		&.invalid {
+			border-color: red;
+		}
 	}
 
 </style>

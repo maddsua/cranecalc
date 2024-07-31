@@ -2,7 +2,7 @@
 
 </script>
 
-<div class="input-group">
+<div class="group">
 
 	<div class="header">
 		<slot name="header">
@@ -20,7 +20,7 @@
 
 <style lang="scss">
 
-	.input-group {
+	.group {
 		border: 1px solid rgba(212, 212, 212, 0.5);
 		border-radius: 0.5rem;
 		background-color: var(--app-bg);
@@ -30,7 +30,7 @@
 		font-size: 0.95rem;
 		background-color: var(--app-bg);
 		position: relative;
-		top: -0.5rem;
+		top: -0.75rem;
 		margin: 0 1rem;
 		padding: 0 0.5rem;
 		width: fit-content;

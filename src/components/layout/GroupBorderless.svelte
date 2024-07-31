@@ -2,7 +2,7 @@
 
 </script>
 
-<div class="input-group">
+<div class="group-borderless">
 
 	<div class="header">
 		<slot name="header">
@@ -20,7 +20,7 @@
 
 <style lang="scss">
 
-	.input-group {
+	.group-borderless {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
