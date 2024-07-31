@@ -7,10 +7,12 @@
 
 <style lang="scss">
 
+	@import "../../breakpoints.scss";
+
 	button {
 		padding: 0.5rem 1.5rem;
-		background-color: #01ff95;
-		color: var(--app-bg);
+		background-color: var(--app-color-button-bg);
+		color: var(--app-color-button-text);
 
 		opacity: 0.9;
 		font-size: 0.9rem;
@@ -21,8 +23,8 @@
 		&:hover {
 			cursor: pointer;
 			opacity: 1;
-			background-color: #ff7c01;
-			color: white;
+			background-color: var(--app-color-button-hover-bg);
+			color: var(--app-color-button-hover-text);
 		}
 	}
 

@@ -56,7 +56,8 @@
 		padding: 0.5rem 1rem;
 		font-size: 0.95rem;
 		font-weight: 300;
-		background-color: #2b2a33;
+		background-color: var(--app-bg-alt);
+		color: var(--app-text);
 		border: 1px solid #8f8f9d;
 		border-radius: 0.25rem;
 

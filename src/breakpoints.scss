@@ -1,9 +1,4 @@
 
-@mixin theme-light {
-	@media (prefers-color-scheme: light) { @content };
-}
-
-
 @mixin screen-m {
 	@media (max-width: 1050px) { @content };
 }

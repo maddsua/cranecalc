@@ -34,13 +34,13 @@ export interface CalculatorProps {
 	//	crane span, value
 	l: number;
 
-	//	crane lifitng range, value
-	lr: number;
+	//	crane lifting height, value
+	lh: number;
 
-	//	hoisting motor speed, value
+	//	lifting motor speed, value
 	vpod: number;
 	
-	//	hoisting motor op mode, option
+	//	lifting motor op mode, option
 	pod_mod: keyof typeof operating_mode;
 	
 	//	crane motor speed, value
@@ -67,7 +67,7 @@ export interface ComputedResult {
 	//	wheel pressue
 	pk: number;
 
-	//	hoisting motor power
+	//	lifting motor power
 	npod: number;
 
 	//	crane motor power

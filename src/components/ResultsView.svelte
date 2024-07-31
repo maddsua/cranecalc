@@ -1,8 +1,11 @@
 <script lang="ts">
 
+import TableRow from "./results/TableRow.svelte";
 import type { ComputedResult } from "../calculator/clientside";
 
-import TableRow from "./results/TableRow.svelte";
+import appIntl from '../data/app-intl.json';
+import { intlText } from "../intl";
+import { uiLanguage } from "./uiState";
 
 export let data: ComputedResult | null;
 
@@ -11,27 +14,27 @@ export let data: ComputedResult | null;
 <div class="results-table">
 
 	<TableRow value={data?.gk.toFixed(2)}>
-		Crane total mass, T
+		{intlText(appIntl.results.fields.mass, $uiLanguage)}
 	</TableRow>
 
 	<TableRow value={data?.gt.toFixed(2)}>
-		Trolley mass, T
+		{intlText(appIntl.results.fields.trolley_mass, $uiLanguage)}
 	</TableRow>
 
 	<TableRow value={data?.pk.toFixed(2)}>
-		Wheel pressure, kN
+		{intlText(appIntl.results.fields.wheel_pressure, $uiLanguage)}
 	</TableRow>
 
 	<TableRow value={data?.npod.toFixed(2)}>
-		Hoising motor power, kWt
+		{intlText(appIntl.results.fields.lifting_motor_pwr, $uiLanguage)}
 	</TableRow>
 
 	<TableRow value={data?.nkr.toFixed(2)}>
-		Crane motor power, kWt
+		{intlText(appIntl.results.fields.bridge_motor_pwr, $uiLanguage)}
 	</TableRow>
 
 	<TableRow value={data?.ntel.toFixed(2)}>
-		Trolley motor power, kWt
+		{intlText(appIntl.results.fields.trolley_motor_pwr, $uiLanguage)}
 	</TableRow>
 	
 </div>

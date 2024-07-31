@@ -46,9 +46,15 @@ export let value: string | undefined = undefined;
 		padding: 0.5rem 1rem;
 		font-size: 0.85rem;
 		font-weight: 300;
-		background-color: #2b2a33;
 		border: 1px solid #8f8f9d;
 		border-radius: 0.25rem;
+		color: var(--app-text);
+		background-color: var(--app-bg-alt);
+	}
+
+	option {
+		color: var(--app-text);
+		background-color: var(--app-bg-alt);
 	}
 
 </style>

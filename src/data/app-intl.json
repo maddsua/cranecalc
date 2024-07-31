@@ -1,0 +1,186 @@
+{
+	"app": {
+
+		"header": {
+
+			"title": {
+				"en": "Crane calculator",
+				"uk": "Розрахунок крану"
+			}
+		}
+	},
+	"forms": {
+
+		"groups": {
+
+			"class": {
+
+				"header": {
+					"en": "Classifications",
+					"uk": "Класифікація"
+				},
+
+				"labels": {
+
+					"type": {
+						"en": "Crane type",
+						"uk": "Тип крану"
+					},
+
+					"class": {
+						"en": "Classification group by ISO 4301/1",
+						"uk": "Група класифікації за ISO 4301/1"
+					},
+
+					"power": {
+						"en": "Power type",
+						"uk": "Тип живлення"
+					},
+
+					"climate": {
+						"en": "Climate option",
+						"uk": "Кліматичне виконання"
+					},
+
+					"railtype": {
+						"en": "Rail type/size",
+						"uk": "Типорозмір рельсу"
+					},
+
+					"cabin": {
+						"en": "Cabin type",
+						"uk": "Тип кабіни"
+					}
+				}
+			},
+
+			"cargo": {
+
+				"header": {
+					"en": "Cargo options",
+					"uk": "Вантажні опції"
+				},
+
+				"labels": {
+
+					"capacity": {
+						"en": "Load capacity, T",
+						"uk": "Вантажопідйомність, Т"
+					},
+
+					"span": {
+						"en": "Crane span, m",
+						"uk": "Довжина прольоту, м"
+					},
+
+					"height": {
+						"en": "Maximum lifting height, m",
+						"uk": "Висота підйому, м"
+					}
+				}
+			},
+			
+			"speeds": {
+
+				"header": {
+					"en": "Moving speeds",
+					"uk": "Швидкості пересування"
+				},
+
+				"labels": {
+
+					"lifting": {
+						"en": "Cargo lifting ",
+						"uk": "Підйом вантажу"
+					},
+
+					"bridge": {
+						"en": "Bridge movement",
+						"uk": "Рух мосту"
+					},
+
+					"trolley": {
+						"en": "Trolley movement",
+						"uk": "Рух візка"
+					}
+				},
+
+				"shared": {
+
+					"speed": {
+						"en": "Rated speed, m/s",
+						"uk": "Робоча швидкість, м/с"
+					},
+
+					"opmode": {
+						"en": "Operating mode",
+						"uk": "Режим роботи"
+					}
+				}
+			}
+		}
+	},
+
+	"results": {
+
+		"header": {
+			"en": "Computed results",
+			"uk": "Результати розрахунку"
+		},
+
+		"fields": {
+
+			"mass": {
+				"en": "Crane total mass, T",
+				"uk": "Загальна маса крану, Т"
+			},
+			"trolley_mass": {
+				"en": "Trolley mass, T",
+				"uk": "Маса візка, Т"
+			},
+			"wheel_pressure": {
+				"en": "Wheel pressure, kN",
+				"uk": "Тиск на колесо, кН"
+			},
+			"lifting_motor_pwr": {
+				"en": "Lifting motor power, kWt",
+				"uk": "Потужність двигуна підйому, кВт"
+			},
+			"bridge_motor_pwr": {
+				"en": "Bridge movement",
+				"uk": "Потужність двигуна мосту, кВт"
+			},
+			"trolley_motor_pwr": {
+				"en": "Trolley motor power, kWt",
+				"uk": "Потужність двигуна візка, кВт"
+			}
+		}
+	},
+
+	"controls": {
+
+		"header": {
+			"en": "Controls",
+			"uk": "Керування"
+		},
+
+		"actions": {
+
+			"recalc": {
+				"en": "Recalculate",
+				"uk": "Розрахувати"
+			},
+
+			"plot": {
+				"en": "Plot on drawing",
+				"uk": "Накреслити"
+			},
+
+			"export": {
+				"en": "Export CSV",
+				"uk": "Експорт в CSV"
+			}
+		}
+	}
+
+}

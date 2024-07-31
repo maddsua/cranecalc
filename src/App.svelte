@@ -7,8 +7,13 @@ import ResultsView from "./components/ResultsView.svelte";
 import FormContent from "./components/FormContent.svelte";
 import SubmitButton from "./components/form/SubmitButton.svelte";
 import ErrorBlock from "./components/ErrorBlock.svelte";
+import UiHeader from "./components/UiHeader.svelte";
 import { calculate, type ComputedResult } from './calculator/clientside/index';
 import { inputState } from "./components/inputState";
+
+import appIntl from './data/app-intl.json';
+import { intlText } from "./intl";
+import { uiLanguage } from "./components/uiState";
 
 let computedData: ComputedResult | null = null;
 let formRef: HTMLFormElement;
@@ -47,6 +52,8 @@ onMount(() => handleRefresh());
 
 </script>
 
+<UiHeader />
+
 <main>
 
 	<form on:change={handleRefresh} on:submit={handleSubmit} bind:this={formRef}>
@@ -64,7 +71,7 @@ onMount(() => handleRefresh());
 	<Group>
 	
 		<svelte:fragment slot="header">
-			Computed results
+			{intlText(appIntl.results.header, $uiLanguage)}
 		</svelte:fragment>
 
 		<ResultsView data={computedData} />
@@ -74,21 +81,21 @@ onMount(() => handleRefresh());
 	<Group>
 	
 		<svelte:fragment slot="header">
-			Controls
+			{intlText(appIntl.controls.header, $uiLanguage)}
 		</svelte:fragment>
 
 		<div class="controls">
 
 			<SubmitButton on:click={handleRefresh}>
-				Recalculate
+				{intlText(appIntl.controls.actions.recalc, $uiLanguage)}
 			</SubmitButton>
 
 			<SubmitButton>
-				Plot
+				{intlText(appIntl.controls.actions.plot, $uiLanguage)}
 			</SubmitButton>
 
 			<SubmitButton>
-				Export
+				{intlText(appIntl.controls.actions.export, $uiLanguage)}
 			</SubmitButton>
 
 		</div>
@@ -99,6 +106,8 @@ onMount(() => handleRefresh());
 
 <style lang="scss">
 
+	@import "./breakpoints.scss";
+
 	main {
 		display: grid;
 		gap: 2rem;
@@ -106,6 +115,10 @@ onMount(() => handleRefresh());
 		width: 65rem;
 		max-width: 100%;
 		margin: 0 auto;
+
+		@include screen-s {
+			padding: 2rem 1rem;
+		}
 	}
 
 	.controls {
