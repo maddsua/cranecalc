@@ -26,27 +26,27 @@ import operating_mode from '../data/options/operating_mode.json';
 			Classifications
 		</svelte:fragment>
 
-		<Select options={crane_type} name="type" bind:value={$inputState.type}>
+		<Select options={crane_type} name="type" bind:value={$inputState.kr_t}>
 			Crane type
 		</Select>
 
-		<Select options={class_group} name="classg" bind:value={$inputState.classg}>
+		<Select options={class_group} name="classg" bind:value={$inputState.cls_g}>
 			Classification group by ISO 4301/1
 		</Select>
 
-		<Select options={power_options} name="power" bind:value={$inputState.power}>
+		<Select options={power_options} name="power" bind:value={$inputState.pwrt_t}>
 			Power type
 		</Select>
 
-		<Select options={climate_options} name="climate" bind:value={$inputState.climate}>
+		<Select options={climate_options} name="climate" bind:value={$inputState.clmt_t}>
 			Climate option
 		</Select>
 
-		<Select options={rail_type} name="rail_type" bind:value={$inputState.railType}>
+		<Select options={rail_type} name="rail_type" bind:value={$inputState.rail_t}>
 			Rail type/size
 		</Select>
 
-		<Select options={cabin_type} name="cabin_type" bind:value={$inputState.cabinType}>
+		<Select options={cabin_type} name="cabin_type" bind:value={$inputState.cabin_t}>
 			Cabin type
 		</Select>
 
@@ -58,15 +58,15 @@ import operating_mode from '../data/options/operating_mode.json';
 			Cargo options
 		</svelte:fragment>
 
-		<NumberInput min={1} step={0.01} name="capacity" bind:value={$inputState.capacity}>
+		<NumberInput min={1} step={0.01} name="capacity" bind:value={$inputState.gql}>
 			Load capacity, T
 		</NumberInput>
 
-		<NumberInput min={1} step={0.01} name="span" bind:value={$inputState.span}>
+		<NumberInput min={1} step={0.01} name="span" bind:value={$inputState.l}>
 			Crane span, m
 		</NumberInput>
 
-		<NumberInput min={1} step={0.01} name="range" bind:value={$inputState.range}>
+		<NumberInput min={1} step={0.01} name="range" bind:value={$inputState.lr}>
 			Maximum lifting range, m
 		</NumberInput>
 
@@ -86,11 +86,11 @@ import operating_mode from '../data/options/operating_mode.json';
 		
 			<Columns2>
 	
-				<NumberInput min={0.01} step={0.01} name="motor_primary_speed" bind:value={$inputState.motorPrimarySpeed}>
+				<NumberInput min={0.01} step={0.01} name="motor_primary_speed" bind:value={$inputState.vpod}>
 					Rated speed, m/s
 				</NumberInput>
 		
-				<Select options={operating_mode} name="motor_primary_mode" bind:value={$inputState.motorPrimaryMode}>
+				<Select options={operating_mode} name="motor_primary_mode" bind:value={$inputState.pod_mod}>
 					Operating mode
 				</Select>
 	
@@ -106,11 +106,11 @@ import operating_mode from '../data/options/operating_mode.json';
 		
 			<Columns2>
 	
-				<NumberInput min={0.01} step={0.01} name="motor_bridge_speed" bind:value={$inputState.motorBridgeSpeed}>
+				<NumberInput min={0.01} step={0.01} name="motor_bridge_speed" bind:value={$inputState.vkr}>
 					Rated speed, m/s
 				</NumberInput>
 		
-				<Select options={operating_mode} name="motor_bridge_mode"  bind:value={$inputState.motorBridgeMode}>
+				<Select options={operating_mode} name="motor_bridge_mode"  bind:value={$inputState.kr_mod}>
 					Operating mode
 				</Select>
 	
@@ -126,11 +126,11 @@ import operating_mode from '../data/options/operating_mode.json';
 		
 			<Columns2>
 	
-				<NumberInput min={0.01} step={0.01} name="motor_troll_speed" bind:value={$inputState.motorTrollSpeed}>
+				<NumberInput min={0.01} step={0.01} name="motor_troll_speed" bind:value={$inputState.vtel}>
 					Rated speed, m/s
 				</NumberInput>
 		
-				<Select options={operating_mode} name="motor_troll_mode" bind:value={$inputState.motorTrollMode}>
+				<Select options={operating_mode} name="motor_troll_mode" bind:value={$inputState.tel_mod}>
 					Operating mode
 				</Select>
 	

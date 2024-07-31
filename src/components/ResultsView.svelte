@@ -1,37 +1,37 @@
 <script lang="ts">
-    import type { ComputedResult } from "../calc";
 
+import type { ComputedResult } from "../calculator/clientside";
 
 import TableRow from "./results/TableRow.svelte";
 
-export let data: ComputedResult;
+export let data: ComputedResult | null;
 
 </script>
 
 <div class="results-table">
 
-	<TableRow value={data.totalMass}>
+	<TableRow value={data?.gk.toFixed(2)}>
 		Crane total mass, T
 	</TableRow>
 
-	<TableRow value={data.trolleyMass}>
+	<TableRow value={data?.gt.toFixed(2)}>
 		Trolley mass, T
 	</TableRow>
 
-	<TableRow value={data.wheelPressure}>
+	<TableRow value={data?.pk.toFixed(2)}>
 		Wheel pressure, kN
 	</TableRow>
 
-	<TableRow value={data.primaryMotorPower}>
-		Primary motor power
+	<TableRow value={data?.npod.toFixed(2)}>
+		Hoising motor power, kWt
 	</TableRow>
 
-	<TableRow value={data.bridgeMotorPower}>
-		Bridge motor power
+	<TableRow value={data?.nkr.toFixed(2)}>
+		Crane motor power, kWt
 	</TableRow>
 
-	<TableRow value={data.trolleyMotorPower}>
-		Trolley motor power
+	<TableRow value={data?.ntel.toFixed(2)}>
+		Trolley motor power, kWt
 	</TableRow>
 	
 </div>

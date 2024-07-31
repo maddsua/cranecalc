@@ -1,5 +1,7 @@
 <script lang="ts">
 
+import { onMount } from "svelte";
+
 import Group from "./components/layout/Group.svelte";
 import ResultsView from "./components/ResultsView.svelte";
 import FormContent from "./components/FormContent.svelte";
@@ -8,22 +10,23 @@ import ErrorBlock from "./components/ErrorBlock.svelte";
 import { calculate, type ComputedResult } from './calculator/clientside/index';
 import { inputState } from "./components/inputState";
 
-let computedData: ComputedResult = {};
+let computedData: ComputedResult | null = null;
 let formRef: HTMLFormElement;
 let displayError: string | null = null;
 
-const calculatorExec = () => {
+const handleCalcualte = () => {
 
 	const result = calculate($inputState as Required<typeof $inputState>);
 	if (result instanceof Error) {
 		displayError = `Calculation failed: ${result.message}`;
+		computedData = null;
 		return;
 	}
 
 	computedData = result;
 };
 
-const handleFormChange = () => {
+const handleRefresh = () => {
 
 	if (!formRef.checkValidity()) {
 		return;
@@ -31,20 +34,22 @@ const handleFormChange = () => {
 
 	displayError = null;
 
-	calculatorExec();
+	handleCalcualte();
 };
 
 const handleSubmit = (event: SubmitEvent) => {
 	event.preventDefault();
 	displayError = null;
-	calculatorExec();
+	handleCalcualte();
 };
+
+onMount(() => handleRefresh());
 
 </script>
 
 <main>
 
-	<form on:change={handleFormChange} on:submit={handleSubmit} bind:this={formRef}>
+	<form on:change={handleRefresh} on:submit={handleSubmit} bind:this={formRef}>
 		
 		<FormContent />
 
@@ -74,7 +79,7 @@ const handleSubmit = (event: SubmitEvent) => {
 
 		<div class="controls">
 
-			<SubmitButton on:click={handleFormChange}>
+			<SubmitButton on:click={handleRefresh}>
 				Recalculate
 			</SubmitButton>
 
