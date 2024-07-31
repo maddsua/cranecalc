@@ -144,10 +144,22 @@ import operating_mode from '../data/options/operating_mode.json';
 
 <style lang="scss">
 
+	@import "../breakpoints.scss";
+
 	.form-content {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1.5fr;
 		gap: 2rem;
+
+		@include screen-m {
+			grid-template-columns: 1fr 1fr;
+			gap: 2rem 1rem;
+		}
+
+		@include screen-s {
+			grid-template-columns: 100%;
+			gap: 2rem;
+		}
 	}
 
 </style>
