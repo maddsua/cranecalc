@@ -62,7 +62,7 @@ import { inputState } from "./inputState";
 			{intlText(appIntl.forms.groups.cargo.header, $uiLanguage)}
 		</svelte:fragment>
 
-		<NumberInput min={1} step={0.01} name="capacity" bind:value={$inputState.gql}>
+		<NumberInput min={1} step={0.01} name="capacity" bind:value={$inputState.qgl}>
 			{intlText(appIntl.forms.groups.cargo.labels.capacity, $uiLanguage)}
 		</NumberInput>
 
