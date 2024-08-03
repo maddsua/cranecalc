@@ -53,7 +53,9 @@ const renderTemplate = async () => {
 	content = tempalteDoc.documentElement.outerHTML;
 };
 
-const loadTemplate = async () => {
+$: data, renderTemplate()
+
+onMount(async () => {
 
 	const svgDocument = await fetch(`/templates/drawings/${template}.svg`).then(res => res.text()).catch(() => null);
 	if (!svgDocument?.length) {
@@ -69,14 +71,7 @@ const loadTemplate = async () => {
 		return;
 	}
 
-	renderTemplate();
-};
-
-$: data, renderTemplate()
-
-onMount(() => {
-
-	loadTemplate();
+	await renderTemplate();
 
 	setTimeout(() => {
 		scrollRef.scrollIntoView({ behavior: 'smooth' });
