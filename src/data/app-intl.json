@@ -181,6 +181,14 @@
 				"uk": "Експорт в CSV"
 			}
 		}
-	}
+	},
 
+	"drawing": {
+		"actions": {
+			"download": {
+				"en": "Download drawing",
+				"uk": "Скачати креслення"
+			}
+		}
+	}
 }

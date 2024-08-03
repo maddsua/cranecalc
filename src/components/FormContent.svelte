@@ -14,6 +14,8 @@ import power_options from '../data/options/power_options.json';
 import cabin_type from '../data/options/cabin_type.json';
 import operating_mode from '../data/options/operating_mode.json';
 
+import inputLinits from '../data/limits.json';
+
 import appIntl from '../data/app-intl.json';
 import { intlText } from "../intl";
 import { uiLanguage } from "./uiState";
@@ -62,11 +64,11 @@ import { inputState } from "./inputState";
 			{intlText(appIntl.forms.groups.cargo.header, $uiLanguage)}
 		</svelte:fragment>
 
-		<NumberInput min={1} step={0.01} name="capacity" bind:value={$inputState.qgl}>
+		<NumberInput min={inputLinits.capacity.min} max={inputLinits.capacity.max} step={0.01} name="capacity" bind:value={$inputState.qgl}>
 			{intlText(appIntl.forms.groups.cargo.labels.capacity, $uiLanguage)}
 		</NumberInput>
 
-		<NumberInput min={1} step={0.01} name="span" bind:value={$inputState.l}>
+		<NumberInput min={inputLinits.span.min} max={inputLinits.span.max} step={0.01} name="span" bind:value={$inputState.l}>
 			{intlText(appIntl.forms.groups.cargo.labels.span, $uiLanguage)}
 		</NumberInput>
 

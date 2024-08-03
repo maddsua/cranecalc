@@ -8,7 +8,8 @@ import FormContent from "./components/FormContent.svelte";
 import SubmitButton from "./components/form/SubmitButton.svelte";
 import ErrorBlock from "./components/ErrorBlock.svelte";
 import UiHeader from "./components/UiHeader.svelte";
-import { calculate, type ComputedResult } from './calculator/clientside/index';
+import DrawingView from "./components/DrawingView.svelte";
+import { calculate, type CalculatorProps, type ComputedResult } from './calculator/functional/index';
 import { inputState } from "./components/inputState";
 
 import appIntl from './data/app-intl.json';
@@ -18,6 +19,8 @@ import { uiLanguage } from "./components/uiState";
 let computedData: ComputedResult | null = null;
 let formRef: HTMLFormElement;
 let displayError: string | null = null;
+
+let drawingData: Partial<CalculatorProps & ComputedResult> | null = null;
 
 const handleCalcualte = () => {
 
@@ -37,6 +40,7 @@ const handleRefresh = () => {
 		return;
 	}
 
+	drawingData = null;
 	displayError = null;
 
 	handleCalcualte();
@@ -46,6 +50,10 @@ const handleSubmit = (event: SubmitEvent) => {
 	event.preventDefault();
 	displayError = null;
 	handleCalcualte();
+};
+
+const handleDraw = () => {
+	drawingData = Object.assign({}, computedData, $inputState);
 };
 
 onMount(() => handleRefresh());
@@ -90,17 +98,21 @@ onMount(() => handleRefresh());
 				{intlText(appIntl.controls.actions.recalc, $uiLanguage)}
 			</SubmitButton>
 
-			<SubmitButton>
+			<SubmitButton on:click={handleDraw} disabled={!!drawingData}>
 				{intlText(appIntl.controls.actions.plot, $uiLanguage)}
 			</SubmitButton>
 
-			<SubmitButton>
+			<SubmitButton disabled={true}>
 				{intlText(appIntl.controls.actions.export, $uiLanguage)}
 			</SubmitButton>
 
 		</div>
 
 	</Group>
+
+	{#if drawingData}
+		<DrawingView template="drawing.generic" data={drawingData} />
+	{/if}
 
 </main>
 

@@ -62,7 +62,7 @@ export interface ComputedResult {
 	//	crane total mass
 	gk: number;
 
-	//	trolely mass
+	//	trolley mass
 	gt: number;
 
 	//	wheel pressue

@@ -4,7 +4,7 @@ export let disabled: boolean = false;
 
 </script>
 
-<button type="submit" disabled={disabled} on:click>
+<button type="button" disabled={disabled} on:click>
 	<slot>
 		[Title]
 	</slot>
@@ -12,13 +12,10 @@ export let disabled: boolean = false;
 
 <style lang="scss">
 
-	@import "../../breakpoints.scss";
-
 	button {
-		padding: 0.5rem 1.5rem;
-		background-color: var(--app-color-button-bg);
-		color: var(--app-color-button-text);
-
+		padding: 0.25rem 0.5rem;
+		background-color: #0086f3;
+		color: white;
 		opacity: 0.9;
 		font-size: 0.9rem;
 		font-weight: 600;
@@ -28,15 +25,11 @@ export let disabled: boolean = false;
 		&:hover {
 			cursor: pointer;
 			opacity: 1;
-			background-color: var(--app-color-button-hover-bg);
-			color: var(--app-color-button-hover-text);
 		}
 
 		&:disabled {
 			filter: saturate(0);
 			opacity: 0.5 !important;
-			background-color: var(--app-color-button-bg) !important;
-			color: var(--app-color-button-text) !important;
 			cursor: not-allowed !important;
 		}
 	}

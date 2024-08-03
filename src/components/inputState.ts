@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import type { CalculatorProps } from '../calculator/clientside';
+import type { CalculatorProps } from '../calculator/functional';
 
 export const inputState = writable<Partial<CalculatorProps>>({
 	qgl: 40,

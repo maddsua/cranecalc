@@ -1,7 +1,7 @@
 <script lang="ts">
 
 import TableRow from "./results/TableRow.svelte";
-import type { ComputedResult } from "../calculator/clientside";
+import type { ComputedResult } from "../calculator/functional";
 
 import appIntl from '../data/app-intl.json';
 import { intlText } from "../intl";
