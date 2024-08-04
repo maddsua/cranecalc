@@ -185,9 +185,13 @@
 
 	"drawing": {
 		"actions": {
-			"download": {
-				"en": "Download drawing",
-				"uk": "Скачати креслення"
+			"downloadVector": {
+				"en": "Download vector (svg)",
+				"uk": "Скачати вектор (svg)"
+			},
+			"downloadRaster": {
+				"en": "Download raster (png)",
+				"uk": "Скачати растр (png)"
 			}
 		}
 	}

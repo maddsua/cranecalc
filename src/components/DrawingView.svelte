@@ -12,6 +12,8 @@ import classGroupOpts from '../data/options/class_group.json';
 import climateOptss from '../data/options/climate_options.json';
 import railTypeOpts from '../data/options/rail_type.json';
 import type { CalculatorProps, ComputedResult } from "../calculator/functional";
+import { exportRasterDrawing } from "../exporter/canvas";
+import { exportVectorDrawing } from "../exporter/vector";
 
 export let template: string;
 export let data: Partial<CalculatorProps & ComputedResult> = {};
@@ -79,23 +81,9 @@ onMount(async () => {
 
 });
 
-const handleDownload = () => {
+const handleSvgDownload = () => content ? exportVectorDrawing(content) : null;
 
-	if (!content) {
-		return;
-	}
-
-	const blob = new Blob([content], { type: 'image/svg+xml' });
-
-	const url = URL.createObjectURL(blob);
-	const link = document.createElement('a');
-	link.href = url;
-	link.download = `cranecalc-drawing-export-${new Date().getTime()}.svg`;
-
-	link.click();
-
-	URL.revokeObjectURL(url);
-};
+const handlePngDownload = () => content ? exportRasterDrawing(content, 'png') : null;
 
 </script>
 
@@ -106,9 +94,15 @@ const handleDownload = () => {
 		{@html content}
 
 		<div class="controls">
-			<ActionButton disabled={!content} on:click={handleDownload}>
-				{intlText(appIntl.drawing.actions.download, $uiLanguage)}
+
+			<ActionButton disabled={!content} on:click={handlePngDownload}>
+				{intlText(appIntl.drawing.actions.downloadRaster, $uiLanguage)}
 			</ActionButton>
+
+			<ActionButton disabled={!content} on:click={handleSvgDownload}>
+				{intlText(appIntl.drawing.actions.downloadVector, $uiLanguage)}
+			</ActionButton>
+
 		</div>
 
 	{:else if errorText}
