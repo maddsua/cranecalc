@@ -8,6 +8,7 @@ export const downloadObject = (data: string, name: string, ext?: string) => {
 	const link = document.createElement('a');
 	link.download = [name, ext].filter(item => item?.length).join('.');
 	link.href = data;
+	link.target = '_blank';
 
 	link.click();
 	link.remove();

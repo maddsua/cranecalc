@@ -52,6 +52,14 @@ const renderTemplate = async () => {
 		item.textContent = typeof value === 'string' ? value : value.toFixed(2);
 	}
 
+	//	fix for broken view box in some browsers
+	const svgElement = tempalteDoc.querySelector('svg');
+	if (svgElement?.getAttribute('width') === '100%' || svgElement?.getAttribute('height') === '100%') {
+		const viewbox = svgElement.viewBox.baseVal;
+		svgElement.setAttribute('width', `${viewbox.width}`);
+		svgElement.setAttribute('height', `${viewbox.height}`);
+	}
+
 	content = tempalteDoc.documentElement.outerHTML;
 };
 

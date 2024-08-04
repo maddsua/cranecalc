@@ -7,10 +7,12 @@ export const exportRasterDrawing = async (vector: string, outputFormat: OutputFo
 
 	const canvas = document.createElement('canvas');
 
-	canvas.width = paperSizes.dpi_100.a3.x;
-	canvas.height = paperSizes.dpi_100.a3.y;
+	const { x: sizeX, y: sizeY } = paperSizes.dpi_400;
 
-	const blob = new Blob([vector], {type:'image/svg+xml;charset=utf-8'});
+	canvas.width = sizeX;
+	canvas.height = sizeY;
+
+	const blob = new Blob([vector], { type: 'image/svg+xml;charset=utf-8' });
 	const blobURL = URL.createObjectURL(blob);
 
 	const image = new Image();
@@ -24,24 +26,25 @@ export const exportRasterDrawing = async (vector: string, outputFormat: OutputFo
 
 	await imageLoaded;
 
-	const context = canvas.getContext('2d');
+	const context = canvas.getContext('2d', { alpha: true });
 	if (!context) {
 		throw new Error('Failed to get drawing context');
 	}
 
 	context.fillStyle = 'white';
-	context.fillRect(0, 0, canvas.width, canvas.height);
-	context.drawImage(image, 0, 0, canvas.width, canvas.height);
+	context.fillRect(0, 0, sizeX, sizeY);
+	context.drawImage(image, 0, 0, sizeX, sizeY);
 
-	const exportData = exportCanvas(canvas, outputFormat);
-	downloadObject(exportData, `cranecalc-drawing-export-${new Date().getTime()}`, outputFormat);
+	const exportDataUrl = await exportCanvas(canvas, outputFormat);
+	downloadObject(exportDataUrl, `cranecalc-drawing-export-${new Date().getTime()}`, outputFormat);
 
 	image.remove();
 	URL.revokeObjectURL(blobURL);
+	URL.revokeObjectURL(exportDataUrl);
 	canvas.remove();
 };
 
-const exportCanvas = (canvas: HTMLCanvasElement, format: OutputFormat): string => {
+const exportCanvas = async (canvas: HTMLCanvasElement, format: OutputFormat): Promise<string> => {
 
 	let exportType: string | undefined = undefined;
 
@@ -58,5 +61,11 @@ const exportCanvas = (canvas: HTMLCanvasElement, format: OutputFormat): string =
 		default: break;
 	}
 
-	return canvas.toDataURL(exportType);
+	//	using .toBlob() + URL.createObjectURL, as recommended by MDN:
+	//	https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
+
+	const exportBlob = await new Promise<Blob>((resolve, reject) =>
+		canvas.toBlob((blob) => blob ? resolve(blob) : reject('Empty canvas blob'), exportType));
+
+	return URL.createObjectURL(exportBlob);
 };
