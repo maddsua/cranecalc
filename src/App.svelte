@@ -4,7 +4,7 @@ import { onMount } from "svelte";
 
 import Group from "./components/layout/Group.svelte";
 import ResultsView from "./components/ResultsView.svelte";
-import FormContent from "./components/FormContent.svelte";
+import CalculatorInputs from "./components/CalculatorInputs.svelte";
 import SubmitButton from "./components/form/SubmitButton.svelte";
 import ErrorBlock from "./components/ErrorBlock.svelte";
 import UiHeader from "./components/UiHeader.svelte";
@@ -66,7 +66,7 @@ onMount(() => handleRefresh());
 
 	<form on:change={handleRefresh} on:submit={handleSubmit} bind:this={formRef}>
 		
-		<FormContent />
+		<CalculatorInputs />
 
 	</form>
 

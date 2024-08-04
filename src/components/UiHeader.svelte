@@ -5,14 +5,14 @@ import LangSwitch from "./ui/LangSwitch.svelte";
 
 import appIntl from '../data/app-intl.json';
 import { intlText } from "../intl";
-import { uiLanguage } from "./uiState";
+import { uiLanguage as lang } from "./uiState";
 
 </script>
 
 <nav class="uicontrols">
 
 	<div class="header">
-		{intlText(appIntl.app.header.title, $uiLanguage)}
+		{intlText(appIntl.app.header.title, $lang)}
 	</div>
 
 	

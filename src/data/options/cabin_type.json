@@ -1,7 +1,22 @@
 {
-	"enclosed": "Закрытая",
-	"enclosed_middle": "Закрытая посередине",
-	"open": "Открытая",
-	"remote": "Управление с пола",
-	"movable": "Подвижная"
+	"enclosed": {
+		"uk": "Закрита",
+		"en": "Enclosed"
+	},
+	"enclosed_middle": {
+		"uk": "Закрытая посередине",
+		"en": "Enclosed, middle-placed"
+	},
+	"open": {
+		"uk": "Відкрита",
+		"en": "Open"
+	},
+	"remote": {
+		"uk": "Керування \"з підлоги\"",
+		"en": "Remote controlled"
+	},
+	"mobile": {
+		"uk": "Рухома",
+		"en": "Mobile"
+	}
 }

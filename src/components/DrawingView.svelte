@@ -4,7 +4,7 @@ import { onMount } from "svelte";
 
 import appIntl from '../data/app-intl.json';
 import { intlText } from "../intl";
-import { uiLanguage } from "../components/uiState";
+import { uiLanguage as lang } from "./uiState";
 
 import ActionButton from "./form/ActionButton.svelte";
 
@@ -104,11 +104,11 @@ const handlePngDownload = () => content ? exportRasterDrawing(content, 'png') : 
 		<div class="controls">
 
 			<ActionButton disabled={!content} on:click={handlePngDownload}>
-				{intlText(appIntl.drawing.actions.downloadRaster, $uiLanguage)}
+				{intlText(appIntl.drawing.actions.downloadRaster, $lang)}
 			</ActionButton>
 
 			<ActionButton disabled={!content} on:click={handleSvgDownload}>
-				{intlText(appIntl.drawing.actions.downloadVector, $uiLanguage)}
+				{intlText(appIntl.drawing.actions.downloadVector, $lang)}
 			</ActionButton>
 
 		</div>

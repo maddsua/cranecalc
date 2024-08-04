@@ -17,8 +17,8 @@ import operating_mode from '../data/options/operating_mode.json';
 import inputLinits from '../data/limits.json';
 
 import appIntl from '../data/app-intl.json';
-import { intlText } from "../intl";
-import { uiLanguage } from "./uiState";
+import { intlOptions, intlText } from "../intl";
+import { uiLanguage as lang } from "./uiState";
 
 import { inputState } from "./inputState";
 
@@ -29,31 +29,31 @@ import { inputState } from "./inputState";
 	<Group>
 
 		<svelte:fragment slot="header">
-			{intlText(appIntl.forms.groups.class.header, $uiLanguage)}
+			{intlText(appIntl.forms.groups.class.header, $lang)}
 		</svelte:fragment>
 
-		<Select options={crane_type} name="type" bind:value={$inputState.kr_t}>
-			{intlText(appIntl.forms.groups.class.labels.type, $uiLanguage)}
+		<Select options={intlOptions(crane_type, $lang)} name="type" bind:value={$inputState.kr_t}>
+			{intlText(appIntl.forms.groups.class.labels.type, $lang)}
 		</Select>
 
 		<Select options={class_group} name="classg" bind:value={$inputState.cls_g}>
-			{intlText(appIntl.forms.groups.class.labels.class, $uiLanguage)}
+			{intlText(appIntl.forms.groups.class.labels.class, $lang)}
 		</Select>
 
-		<Select options={power_options} name="power" bind:value={$inputState.pwrt_t}>
-			{intlText(appIntl.forms.groups.class.labels.power, $uiLanguage)}
+		<Select options={intlOptions(power_options, $lang)} name="power" bind:value={$inputState.pwrt_t}>
+			{intlText(appIntl.forms.groups.class.labels.power, $lang)}
 		</Select>
 
 		<Select options={climate_options} name="climate" bind:value={$inputState.clmt_t}>
-			{intlText(appIntl.forms.groups.class.labels.climate, $uiLanguage)}
+			{intlText(appIntl.forms.groups.class.labels.climate, $lang)}
 		</Select>
 
 		<Select options={rail_type} name="rail_type" bind:value={$inputState.rail_t}>
-			{intlText(appIntl.forms.groups.class.labels.railtype, $uiLanguage)}
+			{intlText(appIntl.forms.groups.class.labels.railtype, $lang)}
 		</Select>
 
-		<Select options={cabin_type} name="cabin_type" bind:value={$inputState.cabin_t}>
-			{intlText(appIntl.forms.groups.class.labels.cabin, $uiLanguage)}
+		<Select options={intlOptions(cabin_type, $lang)} name="cabin_type" bind:value={$inputState.cabin_t}>
+			{intlText(appIntl.forms.groups.class.labels.cabin, $lang)}
 		</Select>
 
 	</Group>
@@ -61,19 +61,19 @@ import { inputState } from "./inputState";
 	<Group>
 
 		<svelte:fragment slot="header">
-			{intlText(appIntl.forms.groups.cargo.header, $uiLanguage)}
+			{intlText(appIntl.forms.groups.cargo.header, $lang)}
 		</svelte:fragment>
 
 		<NumberInput min={inputLinits.capacity.min} max={inputLinits.capacity.max} step={0.01} name="capacity" bind:value={$inputState.qgl}>
-			{intlText(appIntl.forms.groups.cargo.labels.capacity, $uiLanguage)}
+			{intlText(appIntl.forms.groups.cargo.labels.capacity, $lang)}
 		</NumberInput>
 
 		<NumberInput min={inputLinits.span.min} max={inputLinits.span.max} step={0.01} name="span" bind:value={$inputState.l}>
-			{intlText(appIntl.forms.groups.cargo.labels.span, $uiLanguage)}
+			{intlText(appIntl.forms.groups.cargo.labels.span, $lang)}
 		</NumberInput>
 
 		<NumberInput min={1} step={0.01} name="height" bind:value={$inputState.lh}>
-			{intlText(appIntl.forms.groups.cargo.labels.height, $uiLanguage)}
+			{intlText(appIntl.forms.groups.cargo.labels.height, $lang)}
 		</NumberInput>
 
 	</Group>
@@ -81,23 +81,23 @@ import { inputState } from "./inputState";
 	<Group>
 
 		<svelte:fragment slot="header">
-			{intlText(appIntl.forms.groups.speeds.header, $uiLanguage)}
+			{intlText(appIntl.forms.groups.speeds.header, $lang)}
 		</svelte:fragment>
 
 		<GroupBorderless>
 
 			<svelte:fragment slot="header">
-				{intlText(appIntl.forms.groups.speeds.labels.lifting, $uiLanguage)}
+				{intlText(appIntl.forms.groups.speeds.labels.lifting, $lang)}
 			</svelte:fragment>
 		
 			<Columns2>
 	
 				<NumberInput min={0.01} step={0.01} name="motor_primary_speed" bind:value={$inputState.vpod}>
-					{intlText(appIntl.forms.groups.speeds.shared.speed, $uiLanguage)}
+					{intlText(appIntl.forms.groups.speeds.shared.speed, $lang)}
 				</NumberInput>
 		
 				<Select options={operating_mode} name="motor_primary_mode" bind:value={$inputState.pod_mod}>
-					{intlText(appIntl.forms.groups.speeds.shared.opmode, $uiLanguage)}
+					{intlText(appIntl.forms.groups.speeds.shared.opmode, $lang)}
 				</Select>
 	
 			</Columns2>
@@ -107,17 +107,17 @@ import { inputState } from "./inputState";
 		<GroupBorderless>
 
 			<svelte:fragment slot="header">
-				{intlText(appIntl.forms.groups.speeds.labels.bridge, $uiLanguage)}
+				{intlText(appIntl.forms.groups.speeds.labels.bridge, $lang)}
 			</svelte:fragment>
 		
 			<Columns2>
 	
 				<NumberInput min={0.01} step={0.01} name="motor_bridge_speed" bind:value={$inputState.vkr}>
-					{intlText(appIntl.forms.groups.speeds.shared.speed, $uiLanguage)}
+					{intlText(appIntl.forms.groups.speeds.shared.speed, $lang)}
 				</NumberInput>
 		
 				<Select options={operating_mode} name="motor_bridge_mode"  bind:value={$inputState.kr_mod}>
-					{intlText(appIntl.forms.groups.speeds.shared.opmode, $uiLanguage)}
+					{intlText(appIntl.forms.groups.speeds.shared.opmode, $lang)}
 				</Select>
 	
 			</Columns2>
@@ -127,17 +127,17 @@ import { inputState } from "./inputState";
 		<GroupBorderless>
 
 			<svelte:fragment slot="header">
-				{intlText(appIntl.forms.groups.speeds.labels.trolley, $uiLanguage)}
+				{intlText(appIntl.forms.groups.speeds.labels.trolley, $lang)}
 			</svelte:fragment>
 		
 			<Columns2>
 	
 				<NumberInput min={0.01} step={0.01} name="motor_troll_speed" bind:value={$inputState.vtel}>
-					{intlText(appIntl.forms.groups.speeds.shared.speed, $uiLanguage)}
+					{intlText(appIntl.forms.groups.speeds.shared.speed, $lang)}
 				</NumberInput>
 		
 				<Select options={operating_mode} name="motor_troll_mode" bind:value={$inputState.tel_mod}>
-					{intlText(appIntl.forms.groups.speeds.shared.opmode, $uiLanguage)}
+					{intlText(appIntl.forms.groups.speeds.shared.opmode, $lang)}
 				</Select>
 	
 			</Columns2>
