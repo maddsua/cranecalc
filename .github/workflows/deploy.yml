@@ -8,6 +8,7 @@ jobs:
   frontend-build:
     runs-on: ubuntu-latest
     steps:
+    # isn't it amazing that we need to do this?
       - uses: actions/checkout@v4
         with:
           lfs: true
