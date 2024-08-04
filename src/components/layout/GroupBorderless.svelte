@@ -1,7 +1,3 @@
-<script lang="ts">
-
-</script>
-
 <div class="group-borderless">
 
 	<div class="header">

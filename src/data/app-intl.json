@@ -184,6 +184,12 @@
 	},
 
 	"drawing": {
+
+		"header": {
+			"en": "Drawing view",
+			"uk": "Перегляд креслення"
+		},
+
 		"actions": {
 			"downloadVector": {
 				"en": "Download vector (svg)",

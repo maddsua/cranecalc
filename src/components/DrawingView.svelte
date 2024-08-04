@@ -7,6 +7,7 @@ import { intlText } from "../intl";
 import { uiLanguage as lang } from "./uiState";
 
 import ActionButton from "./form/ActionButton.svelte";
+import Group from "./layout/Group.svelte";
 
 import classGroupOpts from '../data/options/class_group.json';
 import climateOptss from '../data/options/climate_options.json';
@@ -95,50 +96,57 @@ const handlePngDownload = () => content ? exportRasterDrawing(content, 'png') : 
 
 </script>
 
-<div class="drawing-view" bind:this={scrollRef}>
+<Group>
 
-	{#if content && !errorText}
+	<svelte:fragment slot="header">
+		{intlText(appIntl.drawing.header, $lang)}
+	</svelte:fragment>
 
-		{@html content}
+	<div class="wrapper" bind:this={scrollRef}>
+	
+		{#if content && !errorText}
+	
+			{@html content}
+	
+			<div class="controls">
+	
+				<ActionButton disabled={!content} on:click={handlePngDownload}>
+					{intlText(appIntl.drawing.actions.downloadRaster, $lang)}
+				</ActionButton>
+	
+				<ActionButton disabled={!content} on:click={handleSvgDownload}>
+					{intlText(appIntl.drawing.actions.downloadVector, $lang)}
+				</ActionButton>
+	
+			</div>
+	
+		{:else if errorText}
+			<div class="error-message">
+				{errorText}
+			</div>
+		{/if}
+	
+	</div>
 
-		<div class="controls">
-
-			<ActionButton disabled={!content} on:click={handlePngDownload}>
-				{intlText(appIntl.drawing.actions.downloadRaster, $lang)}
-			</ActionButton>
-
-			<ActionButton disabled={!content} on:click={handleSvgDownload}>
-				{intlText(appIntl.drawing.actions.downloadVector, $lang)}
-			</ActionButton>
-
-		</div>
-
-	{:else if errorText}
-		<div class="error-message">
-			{errorText}
-		</div>
-	{/if}
-
-</div>
+</Group>
 
 <style lang="scss">
 
-	.drawing-view {
+	.wrapper {
 		display: grid;
 		gap: 1rem;
-		background-color: white;
-		padding: 0.5rem;
-		color: black;
-	
+
 		:global(svg) {
 			display: block;
 			width: 100%;
 			height: auto;
+			color: black;
+			background-color: white;
 		}
 	}
 
 	.error-message {
-		color: red;
+		color: #ff543d;
 		font-weight: 600;
 	}
 
@@ -148,7 +156,12 @@ const handlePngDownload = () => content ? exportRasterDrawing(content, 'png') : 
 		flex-flow: row nowrap;
 		justify-content: end;
 		gap: 1rem;
-		padding: 0.5rem;
+		padding: 1rem 0.5rem;
+
+		@media (orientation: portrait) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
 	}
 
 </style>
